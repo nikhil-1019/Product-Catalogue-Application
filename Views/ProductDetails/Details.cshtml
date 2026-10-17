@@ -1,0 +1,19 @@
+@model Product
+@{
+    ViewData["Title"] = Model.ProductName + " - Product Details";
+}
+<header class="header">
+    <h1>Product Details</h1>
+</header>
+<main class="details-container">
+    <div class="image-section">
+        <img class="detail-image" src="@Model.Image" alt="@Model.ProductName" />
+    </div>
+    <section class="details-section">
+        <p class="product-id">Product ID: @Model.ProductId</p>
+        <h1 class="product-name">@Model.ProductName</h1>
+        <span class="category">@Model.ProductCategory</span>
+        <p class="price">₹@Model.ProductPrice.ToString("N0")</p>
+        <a class="back-button" asp-controller="ProductDetails" asp-action="Index">← Back to Products</a>
+    </section>
+</main>

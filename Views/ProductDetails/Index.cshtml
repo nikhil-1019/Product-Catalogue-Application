@@ -1,0 +1,29 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Product Catalog";
+}
+<header class="header">
+    <h1>Product Catalog</h1>
+    <p>Explore Our Products</p>
+</header>
+<main class="main-container">
+    <div class="product-container">
+        @foreach (var product in Model)
+        {
+            <a class="product-link" asp-controller="ProductDetails" asp-action="Details" asp-route-id="@product.ProductId">
+                <article class="product">
+                    <div class="image-container">
+                        <img class="product-image" src="@product.Image" alt="@product.ProductName" />
+                    </div>
+                    <div class="product-info">
+                        <p class="product-id">Product ID: @product.ProductId</p>
+                        <h2 class="product-name">@product.ProductName</h2>
+                        <span class="category">@product.ProductCategory</span>
+                        <p class="price">₹@product.ProductPrice.ToString("N0")</p>
+                        <span class="view-button">View Details</span>
+                    </div>
+                </article>
+            </a>
+        }
+    </div>
+</main>
